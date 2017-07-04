@@ -46,7 +46,13 @@ export class AppComponent {
 
   onGetSeverButtonPress() {
     this.serverService.getDataService().subscribe(
-        (data) => { console.log(data); }
+        (servers: any[]) => {
+                              this.servers = servers;
+                              console.log()
+                            },
+        (error) => {
+                     console.log(error);
+                   }
     );
   }
 }

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Headers, Response } from '@angular/http';
+import { Observable } from 'rxjs/Rx';
 import 'rxjs/Rx';
 
 @Injectable()
@@ -22,13 +23,17 @@ export class ServerServiceService {
   //put request will overwrite the existing data
 
   getDataService() {
-    return this.http.get('https://angular-server-database.firebaseio.com/serverData.json').map(
+    return this.http.get('https://angular-server-database.firebaseio.com/serverData.json')
+    .map(
       (response: Response) => { const data = response.json();
                                 for(const server of data) {
                                   server.name = 'FETCHED_' + server.name;
                                 }
                                 return data;
                               }
-    );
+    )
+    .catch(
+      (error) => { return Observable.throw('Something went wrong'); }
+    )
   }
 }
