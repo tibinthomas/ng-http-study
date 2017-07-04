@@ -41,4 +41,12 @@ export class AppComponent {
       (error) => { console.log(error); }
     );
   }
+
+  onGetSeverButtonPress() {
+    this.serverService.getDataService().subscribe(
+        (response) => { const data = response.json();
+                        console.log(data);
+                      }
+    );
+  }
 }

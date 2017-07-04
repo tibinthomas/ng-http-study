@@ -11,8 +11,17 @@ export class ServerServiceService {
  
   saveDataService(server: any[]) {
     const headers: Headers = new Headers({'Content-Type': 'application/json'});
-    return this.http.post('https://angular-server-database.firebaseio.com/serverData.json',
+    // return this.http.post('https://angular-server-database.firebaseio.com/serverData.json',
+    //    server,
+    //   { headers: headers });
+    return this.http.put('https://angular-server-database.firebaseio.com/serverData.json',
        server,
       { headers: headers });
+  }
+
+  //put request will overwrite the existing data
+
+  getDataService() {
+    return this.http.get('https://angular-server-database.firebaseio.com/serverData.json');
   }
 }
