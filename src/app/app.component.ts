@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent {
   servers = [
     {
@@ -31,6 +32,7 @@ export class AppComponent {
       id: this.generateId()
     });
   }
+
   private generateId() {
     return Math.round(Math.random() * 10000);
   }
@@ -44,8 +46,7 @@ export class AppComponent {
 
   onGetSeverButtonPress() {
     this.serverService.getDataService().subscribe(
-        (data) => { console.log(data);
-                  }
+        (data) => { console.log(data); }
     );
   }
 }

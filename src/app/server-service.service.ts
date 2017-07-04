@@ -24,7 +24,11 @@ export class ServerServiceService {
   getDataService() {
     return this.http.get('https://angular-server-database.firebaseio.com/serverData.json').map(
       (response: Response) => { const data = response.json();
-                                return data; }
+                                for(const server of data) {
+                                  server.name = 'FETCHED_' + server.name;
+                                }
+                                return data;
+                              }
     );
-  } 
+  }
 }
