@@ -25,7 +25,8 @@ export class ServerServiceService {
   getDataService() {
     return this.http.get('https://angular-server-database.firebaseio.com/serverData.json')
     .map(
-      (response: Response) => { const data = response.json();
+      (response: Response) => {
+                                const data = response.json();
                                 for(const server of data) {
                                   server.name = 'FETCHED_' + server.name;
                                 }
@@ -35,5 +36,15 @@ export class ServerServiceService {
     .catch(
       (error) => { return Observable.throw('Something went wrong'); }
     )
+  }
+
+  getAppName() {
+    return this.http.get('https://angular-server-database.firebaseio.com/appName.json')
+      .map(
+        (response: Response) => {
+                                  const appName = response.json();
+                                  return appName;
+                                }
+      )
   }
 }
