@@ -44,9 +44,8 @@ export class AppComponent {
 
   onGetSeverButtonPress() {
     this.serverService.getDataService().subscribe(
-        (response) => { const data = response.json();
-                        console.log(data);
-                      }
+        (data) => { console.log(data);
+                  }
     );
   }
 }
